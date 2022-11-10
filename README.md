@@ -4,7 +4,7 @@ Capacitances is an important parameter for any chip that we design. The propagat
 <b>Setup Time</b>: Setup time is the amount of time required for the input to a Flip-Flop to be stable before a clock edge.<br><br>
 <b>Hold TIme</b>: Hold time is the minimum amount of time required for the input to a Flip-Flop to be stable after a clock edge.<br>
 <p align="center">
-  <img src="https://www.researchgate.net/profile/Bing_Li133/publication/323349911/figure/fig2/AS:601153570103320@1520337588961/Setup-time-t-su-hold-time-t-h-and-clock-to-q-delay-d-cq-of-a-flipflop.png" width="1000"/><br>
+ <img src="!(https://user-images.githubusercontent.com/110080106/201023386-a0506ab5-a057-4626-b28b-656e86990351.png)"width="1000"/><br>
   Fig 3. Timing Diagram
 </p>
 
