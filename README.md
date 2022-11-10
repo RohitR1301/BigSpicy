@@ -1,0 +1,1 @@
+# BigSpicy--Generating-Test-to-measure-Input-Capacitance
