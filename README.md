@@ -11,5 +11,9 @@ In digital designs, each and every flip-flop has some restrictions related to th
 <br>Setup time and hold time are said to be the backbone of timing analysis. Rightly so, for the chip to function properly, setup and hold timing constraints need to be met properly for each and every flip-flop in the design. If even a single flop exists that does not meet setup and hold requirements for timing paths starting from/ending at it, the design will fail and meta-stability will occur.
 
 ## Measuring Input Capacitance in BigSpicy
+<b>Input Files to these steps<br></b>
+<b><br>Output File</b><br> 
+<b><br>Steps to follow for generating Test to measure input Capacitance</b><br>
+
 ## Running Xyce to perform tests
 
