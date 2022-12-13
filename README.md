@@ -2,21 +2,25 @@
 bigspicy is a tool for merging circuit descriptions (netlists), generating Spice decks modeling those circuits, generating Spice tests to measure those models, and analyzing the results of running Spice on those tests. Bigspicy allows you to combine structural Verilog from a PDK, Spice models of standard cells, a structural Verilog model of some circuit implemented in that PDK, and parasitics extracted into SPEF format. You can then reason about the electrical structure of the design however you want. Bigspicy generates Spice decks in Xyce format, though this can (and should) be extended to other Spice dialects.<br> 
 This repo shows the steps for merging the SPEF, verilog and spice netlist into a circuit protobuf and generating the spice file of the design which can further be used to perform various tests and analysis.
 In this repo, the design of baud rate generator implemented using SKY130 PDKS. The RTL to GDS2 flow of the given design can be referred from the following github repo.
-https://github.com/RohitR1301/iiitb_brg.git
+<br> https://github.com/RohitR1301/iiitb_brg.git
 
 ## Flowchart
 ![image](https://user-images.githubusercontent.com/110079689/200117467-c5c6d165-5011-4002-9b82-d756f3bbd48d.png)
 
 ## XDM- File Conversion to Xyce format
 Primitives and spice files are needed by BigSpicy but they are not processed in their raw format. The files that are fed to BigSpicy should be in Xyce format as minimal internal processing is required for them. 
-#### steps to install XDM on debian Linux 
+<br>XDM can be installed from the below link
+<br>https://github.com/Xyce/XDM
+
 #### Steps to convert file into Xyce format
 
 ## Xyce
 ### 1) Merge SPEF, Verilog and Spice files into circuit protobuf</n>
 After obtaining all the required files that is, 7nm Primitives and Spice files in Xyce format, netlist and spice files. We need to merge them as in order to generate a spice deck the order of ports for each instantiated module are also required which leads to dependency on PDK. We then convert the merged files into protobuf with the help of protoc. 
+<br>Xyce can be installed from the below link
+<br>https://xyce.sandia.gov/documentation/BuildingGuide.html
 
-#### steps to install Xyce on debian Linux 
+
 #### Steps to install protoc
 #### Steps to merge file to obtain circuit protobuf
 ## 2) Generating Module Spice Model and Transistor level Spice
