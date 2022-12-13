@@ -4,6 +4,24 @@ This repo shows the steps for merging the SPEF, verilog and spice netlist into a
 In this repo, the design of baud rate generator implemented using SKY130 PDKS. The RTL to GDS2 flow of the given design can be referred from the following github repo.
 <br> https://github.com/RohitR1301/iiitb_brg.git
 
+## Pre-Requisite
+We need to install some python dependencies, for that follow the below steps
+```
+git clone https://github.com/RohitR1301/BigSpicy.git
+cd BigSpicy/
+sudo apt-get update
+pip install -e ".[dev]"
+pip install -r requirements.txt
+sudo apt install -y protobuf-compiler iverilog
+```
+Another prerequisite for this step is to compile protobufs into python file.(_pb2.py).
+To compile the protobufs, type the below command in terminal in the BigSpicy(cloned_repo) directory:
+```
+git submodule update --init  
+protoc --proto_path vlsir vlsir/*.proto vlsir/*/*.proto --python_out=.
+protoc proto/*.proto --python_out=.
+```
+
 ## Flowchart
 ![image](https://user-images.githubusercontent.com/110079689/200117467-c5c6d165-5011-4002-9b82-d756f3bbd48d.png)
 
