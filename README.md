@@ -31,6 +31,9 @@ Primitives and spice files are needed by BigSpicy but they are not processed in 
 <br>https://github.com/Xyce/XDM
 
 #### Steps to convert file into Xyce format
+```
+xdm_bdl -s hspice "path to the pdk"/"file to be converted" -d lib
+```
 
 ## Xyce
 ### 1) Merge SPEF, Verilog and Spice files into circuit protobuf</n>
@@ -38,9 +41,20 @@ After obtaining all the required files that is, 7nm Primitives and Spice files i
 <br>Xyce can be installed from the below link
 <br>https://xyce.sandia.gov/documentation/BuildingGuide.html
 
-
-#### Steps to install protoc
 #### Steps to merge file to obtain circuit protobuf
+```
+./bigspicy.py \
+   --import \
+   --spef example_inputs/iiitb_brg/iiitb_brg.spef
+   --spice lib/sky130_fd_sc_hd.spice \
+   --verilog example_inputs/iiitb_brg/iiitb_brg.v\
+   --spice_header lib/sky130_fd_pr__pfet_01v8.pm3.spice \
+   --spice_header lib/sky130_fd_pr__nfet_01v8.pm3.spice \
+   --spice_header lib/sky130_ef_sc_hd__decap_12.spice \
+   --spice_header lib/sky130_fd_pr__pfet_01v8_hvt.pm3.spice \
+   --top iiitb_3bit_rc \
+   --save final.pb \
+```
 ## 2) Generating Module Spice Model and Transistor level Spice
 The protobuf file that we have generated in the previous step and PDK spice file are then used to make a whole module spice model.</n>
 We then pass the ```--flatten_spice``` argument to convert the whole module spice model into transistor level spice.
