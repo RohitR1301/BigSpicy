@@ -55,9 +55,22 @@ After obtaining all the required files that is, 7nm Primitives and Spice files i
    --top iiitb_3bit_rc \
    --save final.pb \
 ```
+The above steps will generate final.pb file. To specify the location of the final.pb file, go to bigspicy.py file and search for "def withoptions()" function. Change the "output_dir" variable to your desired path.
 ## 2) Generating Module Spice Model and Transistor level Spice
 The protobuf file that we have generated in the previous step and PDK spice file are then used to make a whole module spice model.</n>
-We then pass the ```--flatten_spice``` argument to convert the whole module spice model into transistor level spice.
+We then pass the ```--flatten_spice``` argument to convert the whole module spice model into transistor level spice. In order to generate "spice.sp" file follow the steps below 
+```
+./bigspicy.py --import \
+    --verilog example_inputs/iiitb_brg/iiitb_brg.v \
+    --spice lib/sky130_fd_sc_hd.spice \
+    --spice_header lib/sky130_fd_pr__pfet_01v8.pm3.spice \
+    --spice_header lib/sky130_fd_pr__nfet_01v8.pm3.spice \
+    --spice_header lib/sky130_ef_sc_hd__decap_12.spice \
+    --spice_header lib/sky130_fd_pr__pfet_01v8_hvt.pm3.spice \
+    --save final.pb \
+    --top iiitb_brg \
+    --flatten_spice --dump_spice spice.sp
+```
 ## 3) Generating test to measure input capacitance
 We take the protobuf file, PDK primitives file and the spice file of our module to generate the test manifest and circuit analysis protobuf files. We then run Xyce to perform tests. 
 
@@ -87,5 +100,11 @@ We take the protobuf file, primitives, spice, test manifest and circuit analysis
 ## 6) perform analysis on wire and whole module tests
 We take Final.pb, PDK primitives, test_manifest, test_analysis, PDK spice decks. Input capacitance and delays will be analysed.
 
- 
+## Future Work
+We have currently generated the "final.pb" and "spice.sp" files. The next steps includes finding the path delay for our design and running Xyce to perform test. For the path delay we need t extract different paths using xyce and compare the delay result with other tools. 
+
+## Acknowledgement 
+- Kunal Ghosh, VSD Corp. Pvt. Ltd. 
+- Madhav Rao, Professor, IIIT Bangalore
+- Nanditha Rao, Professor, IIIT Bangalore
 
